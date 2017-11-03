@@ -1,30 +1,115 @@
 'use strict';
 var textToTinyBraille=(function (input) {
-//http://www.alanwood.net/unicode/braille_patterns.html
-//dots:
-   //,___,
-   //|1 4|
-   //|2 5|
-   //|3 6|
-   //|7 8|
-   //`````
-var pixel_map = [[0x01, 0x08],
-                 [0x02, 0x10],
-                 [0x04, 0x20],
-                 [0x40, 0x80]]
-var braille_char_start = 0x2800
-var x=1
-var y=3
-var test=pixel_map[y % 4][x % 2]
-x=0
-y=0
-var test2=pixel_map[y % 4][x % 2]
-console.log(test);
-console.log(test2);
-var charid=test|test2
-console.log(charid)
-
-return String.fromCharCode(braille_char_start + charid);
-//return test
+    //http://www.alanwood.net/unicode/braille_patterns.html
+    //dots:
+    //,___,
+    //|1 4|
+    //|2 5|
+    //|3 6|
+    //|7 8|
+    //`````
+    var braille_char_start = 0x2800
+    var pixel_map = [[0x01, 0x08],
+        [0x02, 0x10],
+        [0x04, 0x20],
+        [0x40, 0x80]]
+    var charactermap={
+        "A":["123","02","123"],
+        "B":["0123","013","12"],
+        "C":["12","03","03"],
+        "D":["0123","03","12"],
+        "E":["0123","013","03"],
+        "F":["0123","02","0"],
+        "G":["12","03","023"],
+        "H":["0123","2","0123"],
+        "I":["03","0123","03"],
+        "J":["2","3","012"],
+        "K":["0123","2","12","03"],
+        "L":["0123","3","3"],
+        "M":["0123","1","2","1","0123"],
+        "N":["0123","1","2","0123"],
+        "O":["12","03","03","12"],
+        "P":["0123","02","1"],
+        "Q":["12","03","023","123"],
+        "R":["0123","02","13"],
+        "S":["13","03","02"],
+        "T":["0","0123","0"],
+        "U":["012","3","3","012"],
+        "V":["01","2","3","2","01"],
+        "W":["012","3","12","3","012"],
+        "X":["023","1","023"],
+        "Y":["0","1","23","1","0"],
+        "Z":["03","023","013","03"],
+        ".":["3"],
+        ",":["3","2"],
+        ";":["3","02"],
+        ":":["13"],
+        "!":["013"],
+        "?":["0","03","1"],
+        "(":["12","03"],
+        ")":["03","12"],
+        " ":[""],
+        "+":["2","123","2"],
+        "-":["2","2","2"],
+        "\"":["01","","01"],
+        "'":["01"],
+        ">":["13","2"],
+        "<":["2","13"],
+        "%":["03","2","1","03"],
+        "[":["0123","03"],
+        "]":["03","0123"],
+        "{":["2","123","13"],
+        "}":["13","123","2"],
+        "_":["3","3","3"],
+        "0":["12","03","12"],
+        "1":["13","0123","3"],
+        "2":["023","03","13"],
+        "3":["03","013","12"],
+        "4":["12","2","0123"],
+        "5":["013","03","02"],
+        "6":["123","023","023"],
+        "7":["03","02","01"],
+        "8":["12","013","12"],
+        "9":["12","02","0123"],
+        "/":["3","2","1","0"],
+        "\\":["0","1","2","3"],
+        "^":["1","0","1"],
+        "~":["1","0","1","0"],
+    };
+    if(!input){
+        input="";
+    }
+    input=input.toUpperCase()
+    var ids=[];
+    var si=0; //slicecount
+    var charid=0; //id of the current braille character
+    for (var i = 0, len = input.length; i < len; i++) {
+        var c=input[i];
+        if(charactermap[c]){
+            for (var l in charactermap[c]){
+                var slice=charactermap[c][l];
+                for(var k in slice){
+                    var pixel=slice[k];
+                    var add=pixel_map[pixel][si%2];
+                    charid|=add;
+                }
+                si+=1;
+                ids.push(charid)
+                charid=0;
+            }
+            //emtpy slice at the end of each characters
+            ids.push(0);
+            si+=1
+        }
+    }
+    if(si % 2 != 0){
+        ids.push(charid)
+    }
+    var output=[];
+    for (var i = 0, len = ids.length; i < len; i+=2) {
+        var id=ids[i]|ids[i+1]
+        output[i]=String.fromCharCode(braille_char_start+id);
+    }
+    return output.join("");
 });
 if (typeof module !== 'undefined') { module.exports = textToTinyBraille; }
