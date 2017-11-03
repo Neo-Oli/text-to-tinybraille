@@ -1,3 +1,3 @@
 #!/usr/bin/env node
-var myfunc = require('./text-to-tinybraille.js');
-console.log(myfunc(process.argv[2]));
+var textToTinyBraille = require('./text-to-tinybraille.js');
+console.log(textToTinyBraille(process.argv[2]));
