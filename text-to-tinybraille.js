@@ -1,5 +1,5 @@
 'use strict';
-var textToTinyBraille=(function (input) {
+var textToTinyBraille=(function (lines) {
     //http://www.alanwood.net/unicode/braille_patterns.html
     //dots:
     //,___,
@@ -79,37 +79,44 @@ var textToTinyBraille=(function (input) {
     if(!input){
         input="";
     }
-    input=input.toUpperCase()
-    var ids=[];
-    var si=0; //slicecount
-    var charid=0; //id of the current braille character
-    for (var i = 0, len = input.length; i < len; i++) {
-        var c=input[i];
-        if(charactermap[c]){
-            for (var l in charactermap[c]){
-                var slice=charactermap[c][l];
-                for(var k in slice){
-                    var pixel=slice[k];
-                    var add=pixel_map[pixel][si%2];
-                    charid|=add;
+    lines=lines.split("\n");
+    var outputlines=[];
+    for(var line in lines){
+        var input=lines[line];
+        input=input.toUpperCase()
+        var ids=[];
+        var si=0; //slicecount
+        var charid=0; //id of the current braille character
+        for (var i = 0, len = input.length; i < len; i++) {
+            var c=input[i];
+            var cm=charactermap[c]
+            if(cm){
+                for (var l in cm){
+                    var slice=cm[l];
+                    for(var k in slice){
+                        var pixel=slice[k];
+                        var add=pixel_map[pixel][si%2];
+                        charid|=add;
+                    }
+                    si+=1;
+                    ids.push(charid)
+                    charid=0;
                 }
-                si+=1;
-                ids.push(charid)
-                charid=0;
+                //emtpy slice at the end of each characters
+                ids.push(0);
+                si+=1
             }
-            //emtpy slice at the end of each characters
-            ids.push(0);
-            si+=1
         }
+        if(si % 2 != 0){
+            ids.push(charid)
+        }
+        var output=[];
+        for (var i = 0, len = ids.length; i < len; i+=2) {
+            var id=ids[i]|ids[i+1]
+            output[i]=String.fromCharCode(braille_char_start+id);
+        }
+        outputlines.push(output.join(""));
     }
-    if(si % 2 != 0){
-        ids.push(charid)
-    }
-    var output=[];
-    for (var i = 0, len = ids.length; i < len; i+=2) {
-        var id=ids[i]|ids[i+1]
-        output[i]=String.fromCharCode(braille_char_start+id);
-    }
-    return output.join("");
+    return outputlines.join("\n");
 });
 if (typeof module !== 'undefined') { module.exports = textToTinyBraille; }
