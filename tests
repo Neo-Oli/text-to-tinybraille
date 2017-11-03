@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+var textToTinyBraille = require('./text-to-tinybraille.js');
+var tests=[
+{"input":"CYBERPUNK","output":"⢎⡁⠑⡔⠁⣟⠆⣟⡁⡯⡂⡯⠂⢇⡸⢸⠢⡇⡧⢎⠀"},
+{"input":"abcdefghijklmnopqrstuvwxyz.,!?():;<>\"+-'%[]{}_0123456789/\\~^", "output":"⡮⡆⣟⠆⢎⡁⣏⠆⣟⡁⡯⠁⢎⡅⡧⡇⣹⡁⢄⠇⡧⢎⢸⣀⢸⠢⢺⢸⠢⡇⢎⡱⢸⠕⠰⣩⡆⡯⡂⣊⠅⢹⠁⢇⡸⠘⢄⠜⠸⡰⡸⢨⢪⠈⢢⠊⢈⣝⡁⡀⡠⢘⠈⡑⠰⡁⡱⢐⢀⠅⢔⢐⠄⠃⠃⢴⠄⠤⠄⠃⡡⢊⢸⡁⣹⠠⣖⢐⡦⢀⣀⠰⡱⢐⣇⢨⣑⢈⡳⠰⢼⢘⡩⢰⣭⢈⠝⠰⡳⠰⢽⢀⠔⠁⠑⢄⠐⠑⠁⠊⠂"},
+{"input":". .","output":"⡀⠀⡀"},
+{"input":"The quick brown fox jumps over the lazy dog.","output":"⢹⠁⡧⡇⣟⡁⠀⢎⣵⠸⣀⠇⣹⡁⢎⡁⡧⢎⠀⢸⡳⢸⢕⠰⣉⠆⢇⢆⠇⡗⢼⠀⢸⠍⠰⣉⠆⡕⡅⠀⢄⠇⢇⡸⢸⠢⢺⢸⠕⢐⡩⠀⠰⣉⠆⠣⡠⠃⣟⡁⡯⡂⠀⢹⠁⡧⡇⣟⡁⠀⣇⡀⡮⡆⣩⣋⠈⢢⠊⠀⢸⡱⠰⣉⠆⢎⡅⡀"}
+
+]
+for(var i in tests){
+    var test=tests[i];
+    var result=textToTinyBraille(test["input"])
+    if(result!=test["output"]){
+        console.log("test "+i+" failed");
+        console.log("Input    : '"+test["input"]+"'");
+        console.log("Expected : '"+test["output"]+"'");
+        console.log("Actual   : '"+result+"'");
+        process.exit();
+    }
+}
+console.log("All tests successfull");
