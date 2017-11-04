@@ -6,6 +6,7 @@ var tests=[
 {"input":". .","output":"⡀⠀⡀"},
 {"input":"The quick brown fox jumps over the lazy dog.","output":"⢹⠁⡧⡇⣟⡁⠀⢎⣵⠸⣀⠇⣹⡁⢎⡁⡧⢎⠀⢸⡳⢸⢕⠰⣉⠆⢇⢆⠇⡗⢼⠀⢸⠍⠰⣉⠆⡕⡅⠀⢄⠇⢇⡸⢸⠢⢺⢸⠕⢐⡩⠀⠰⣉⠆⠣⡠⠃⣟⡁⡯⡂⠀⢹⠁⡧⡇⣟⡁⠀⣇⡀⡮⡆⣩⣋⠈⢢⠊⠀⢸⡱⠰⣉⠆⢎⡅⡀"},
 {"input":".\n.","output":"⡀\n⡀"},
+{"input":"oo","output":"⢎⡱⠰⣉⠆"},
 
 ]
 for(var i in tests){

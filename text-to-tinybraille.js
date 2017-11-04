@@ -89,7 +89,9 @@ var textToTinyBraille=(function (lines) {
         var charid=0; //id of the current braille character
         for (var i = 0, len = input.length; i < len; i++) {
             var c=input[i];
-            var cm=charactermap[c]
+            var cm=charactermap[c].slice()
+            //emtpy slice at the end of each characters
+            cm.push("");
             if(cm){
                 for (var l in cm){
                     var slice=cm[l];
@@ -99,12 +101,10 @@ var textToTinyBraille=(function (lines) {
                         charid|=add;
                     }
                     si+=1;
+
                     ids.push(charid)
                     charid=0;
                 }
-                //emtpy slice at the end of each characters
-                ids.push(0);
-                si+=1
             }
         }
         if(si % 2 != 0){
