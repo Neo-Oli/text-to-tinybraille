@@ -80,6 +80,7 @@ var textToTinyBraille=(function (lines) {
     if(!input){
         input="";
     }
+    lines=lines.replace("\r\n","\n");
     lines=lines.split("\n");
     var outputlines=[];
     for(var line in lines){
