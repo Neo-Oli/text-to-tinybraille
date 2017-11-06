@@ -115,6 +115,10 @@ var textToTinyBraille=(function (lines) {
             var id=ids[i]|ids[i+1]
             output[i]=String.fromCharCode(braille_char_start+id);
         }
+        //if last character is BRAILLE PATTERN BLANK, remove it
+        if(output[output.length -1 ]=="⠀"){
+            output.splice(-1);
+        }
         outputlines.push(output.join(""));
     }
     return outputlines.join("\n");
