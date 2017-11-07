@@ -124,7 +124,7 @@ var textToTinyBraille=(function (lines) {
             }
         }
         //if last character is a space, remove it
-        if([" ","⠀"].includes(braillecharacters[braillecharacters.length -1 ])){
+        if([" ","⠀"].indexOf(braillecharacters[braillecharacters.length -1 ])!=-1){
             braillecharacters.splice(-1);
         }
         outputlines.push(braillecharacters.join(""));
