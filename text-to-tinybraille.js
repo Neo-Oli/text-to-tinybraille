@@ -1,6 +1,6 @@
 'use strict';
 var textToTinyBraille=(function (lines) {
-    //http://www.alanwood.net/unicode/braille_patterns.html
+    // http://www.alanwood.net/unicode/braille_patterns.html
     //dots:
     //,___,
     //|1 4|
@@ -109,16 +109,21 @@ var textToTinyBraille=(function (lines) {
                 }
             }
         }
-        if(si % 2 != 0){
+        if(si % 2){
             ids.push(charid)
         }
         var output=[];
         for (var i = 0, len = ids.length; i < len; i+=2) {
             var id=ids[i]|ids[i+1]
-            output[i]=String.fromCharCode(braille_char_start+id);
+            if(id){
+                output[i]=String.fromCharCode(braille_char_start+id);
+            }else{
+                //For better line breaks replace empty Braille Pattern Blank with a space
+                output[i]=" ";
+            }
         }
-        //if last character is BRAILLE PATTERN BLANK, remove it
-        if(output[output.length -1 ]=="⠀"){
+        //if last character is a space, remove it
+        if(output[output.length -1 ]==" "){
             output.splice(-1);
         }
         outputlines.push(output.join(""));

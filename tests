@@ -3,8 +3,8 @@ var textToTinyBraille = require('./text-to-tinybraille.js');
 var tests=[
 {"input":"CYBERPUNK","output":"⢎⡁⠑⡔⠁⣟⠆⣟⡁⡯⡂⡯⠂⢇⡸⢸⠢⡇⡧⢎"},
 {"input":"abcdefghijklmnopqrstuvwxyz.,!?():;<>\"+-'%[]{}_0123456789/\\~^", "output":"⡮⡆⣟⠆⢎⡁⣏⠆⣟⡁⡯⠁⢎⡅⡧⡇⣹⡁⢄⠇⡧⢎⢸⣀⢸⠢⢺⢸⠢⡇⢎⡱⢸⠕⠰⣩⡆⡯⡂⣊⠅⢹⠁⢇⡸⠘⢄⠜⠸⡰⡸⢨⢪⠈⢢⠊⢈⣝⡁⡀⡠⢘⠈⡑⠰⡁⡱⢐⢀⠅⢔⢐⠄⠃⠃⢴⠄⠤⠄⠃⡡⢊⢸⡁⣹⠠⣖⢐⡦⢀⣀⠰⡱⢐⣇⢨⣑⢈⡳⠰⢼⢘⡩⢰⣭⢈⠝⠰⡳⠰⢽⢀⠔⠁⠑⢄⠐⠑⠁⠊⠂"},
-{"input":". .","output":"⡀⠀⢀"},
-{"input":"The quick brown fox jumps over the lazy dog.","output":"⢹⠁⡧⡇⣟⡁⠀⠰⣩⡆⢇⡸⢈⣏⠰⣉⢸⠴⡁⠀⢸⡳⢸⢕⠰⣉⠆⢇⢆⠇⡗⢼⠀⠀⡯⠁⢎⡱⢨⢪⠀⠀⢄⠇⢇⡸⢸⠢⢺⢸⠕⢐⡩⠀⠀⢎⡱⠘⢄⠜⢸⣋⢸⢕⠀⠀⢹⠁⡧⡇⣟⡁⠀⢸⣀⢰⢵⢈⣝⡁⠑⡔⠁⠀⢸⡱⠰⣉⠆⢎⡅⡀"},
+{"input":". .","output":"⡀ ⢀"},
+{"input":"The quick brown fox jumps over the lazy dog.","output":"⢹⠁⡧⡇⣟⡁ ⠰⣩⡆⢇⡸⢈⣏⠰⣉⢸⠴⡁ ⢸⡳⢸⢕⠰⣉⠆⢇⢆⠇⡗⢼  ⡯⠁⢎⡱⢨⢪  ⢄⠇⢇⡸⢸⠢⢺⢸⠕⢐⡩  ⢎⡱⠘⢄⠜⢸⣋⢸⢕  ⢹⠁⡧⡇⣟⡁ ⢸⣀⢰⢵⢈⣝⡁⠑⡔⠁ ⢸⡱⠰⣉⠆⢎⡅⡀"},
 {"input":".\n.","output":"⡀\n⡀"},
 {"input":"oo","output":"⢎⡱⠰⣉⠆"},
 
