@@ -112,22 +112,24 @@ var textToTinyBraille=(function (lines) {
         if(si % 2){
             ids.push(charid)
         }
-        var output=[];
+        var braillecharacters=[];
         for (var i = 0, len = ids.length; i < len; i+=2) {
             var id=ids[i]|ids[i+1]
-            if(id){
-                output[i]=String.fromCharCode(braille_char_start+id);
-            }else{
+            var nextid=ids[i+2]|ids[i+3]
+            if(!id && nextid){
                 //For better line breaks replace empty Braille Pattern Blank with a space
-                output[i]=" ";
+                braillecharacters[i]=" ";
+            }else{
+                braillecharacters[i]=String.fromCharCode(braille_char_start+id);
             }
         }
         //if last character is a space, remove it
-        if(output[output.length -1 ]==" "){
-            output.splice(-1);
+        if([" ","⠀"].includes(braillecharacters[braillecharacters.length -1 ])){
+            braillecharacters.splice(-1);
         }
-        outputlines.push(output.join(""));
+        outputlines.push(braillecharacters.join(""));
     }
-    return outputlines.join("\n");
+    var output=outputlines.join("\n");
+    return output;
 });
 if (typeof module !== 'undefined') { module.exports = textToTinyBraille; }

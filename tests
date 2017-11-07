@@ -4,9 +4,11 @@ var tests=[
 {"input":"CYBERPUNK","output":"⢎⡁⠑⡔⠁⣟⠆⣟⡁⡯⡂⡯⠂⢇⡸⢸⠢⡇⡧⢎"},
 {"input":"abcdefghijklmnopqrstuvwxyz.,!?():;<>\"+-'%[]{}_0123456789/\\~^", "output":"⡮⡆⣟⠆⢎⡁⣏⠆⣟⡁⡯⠁⢎⡅⡧⡇⣹⡁⢄⠇⡧⢎⢸⣀⢸⠢⢺⢸⠢⡇⢎⡱⢸⠕⠰⣩⡆⡯⡂⣊⠅⢹⠁⢇⡸⠘⢄⠜⠸⡰⡸⢨⢪⠈⢢⠊⢈⣝⡁⡀⡠⢘⠈⡑⠰⡁⡱⢐⢀⠅⢔⢐⠄⠃⠃⢴⠄⠤⠄⠃⡡⢊⢸⡁⣹⠠⣖⢐⡦⢀⣀⠰⡱⢐⣇⢨⣑⢈⡳⠰⢼⢘⡩⢰⣭⢈⠝⠰⡳⠰⢽⢀⠔⠁⠑⢄⠐⠑⠁⠊⠂"},
 {"input":". .","output":"⡀ ⢀"},
-{"input":"The quick brown fox jumps over the lazy dog.","output":"⢹⠁⡧⡇⣟⡁ ⠰⣩⡆⢇⡸⢈⣏⠰⣉⢸⠴⡁ ⢸⡳⢸⢕⠰⣉⠆⢇⢆⠇⡗⢼  ⡯⠁⢎⡱⢨⢪  ⢄⠇⢇⡸⢸⠢⢺⢸⠕⢐⡩  ⢎⡱⠘⢄⠜⢸⣋⢸⢕  ⢹⠁⡧⡇⣟⡁ ⢸⣀⢰⢵⢈⣝⡁⠑⡔⠁ ⢸⡱⠰⣉⠆⢎⡅⡀"},
+{"input":"The quick brown fox jumps over the lazy dog.","output":"⢹⠁⡧⡇⣟⡁ ⠰⣩⡆⢇⡸⢈⣏⠰⣉⢸⠴⡁ ⢸⡳⢸⢕⠰⣉⠆⢇⢆⠇⡗⢼⠀ ⡯⠁⢎⡱⢨⢪⠀ ⢄⠇⢇⡸⢸⠢⢺⢸⠕⢐⡩⠀ ⢎⡱⠘⢄⠜⢸⣋⢸⢕⠀ ⢹⠁⡧⡇⣟⡁ ⢸⣀⢰⢵⢈⣝⡁⠑⡔⠁ ⢸⡱⠰⣉⠆⢎⡅⡀"},
+{"input":"The wizard quickly jinxed the gnomes before they vaporized.","output":"⢹⠁⡧⡇⣟⡁ ⠸⡰⡸⢈⣏⢈⣝⡁⡮⡆⡯⡂⣏⠆ ⠰⣩⡆⢇⡸⢈⣏⠰⣉⢸⠴⡁⣇⡀⠑⡔⠁ ⠠⡸⢈⣏⢸⠢⡇⡕⡅⣟⡁⣏⠆ ⠈⡏⢸⢼⢸⣋⠀ ⢎⡅⡗⢼⠰⣉⠆⡗⠔⡇⣟⡁⣊⠅ ⢸⡳⢸⣋⢸⠍⠰⣉⠆⡯⡂⣟⡁ ⠈⡏⢸⢼⢸⣋⠈⢢⠊⠀ ⠣⡠⠃⡮⡆⡯⠂⢎⡱⢸⢕⢈⣏⢈⣝⡁⣟⡁⣏⠆⡀"},
 {"input":".\n.","output":"⡀\n⡀"},
 {"input":"oo","output":"⢎⡱⠰⣉⠆"},
+{"input":"T T","output":"⢹⠁ ⠈⡏"},
 
 ]
 for(var i in tests){
