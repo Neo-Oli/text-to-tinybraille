@@ -1,6 +1,6 @@
 JS:= text-to-tinybraille.js
-minify: vendor/autoload.php text-to-tinybraille.min.js
-text-to-tinybraille.min.js: $(JS)
+minify: vendor/autoload.php dist/text-to-tinybraille.min.js
+dist/text-to-tinybraille.min.js: $(JS)
 	php -r "\
 		require __DIR__ . '/vendor/autoload.php';\
 		use MatthiasMullie\Minify;\
