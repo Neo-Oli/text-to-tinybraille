@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 var textToTinyBraille = require('./text-to-tinybraille.js');
 var args=process.argv;
 args.splice(0,2);
