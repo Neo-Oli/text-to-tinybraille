@@ -1,6 +1,7 @@
 JS:= text-to-tinybraille.js
-minify: vendor/autoload.php dist/text-to-tinybraille.min.js
-dist/text-to-tinybraille.min.js: $(JS)
+minify: dist/text-to-tinybraille.min.js
+dist/text-to-tinybraille.min.js: $(JS) vendor/autoload.php
+	mkdir -p dist
 	php -r "\
 		require __DIR__ . '/vendor/autoload.php';\
 		use MatthiasMullie\Minify;\
@@ -14,7 +15,7 @@ dist/text-to-tinybraille.min.js: $(JS)
 .PHONY: clean
 clean:
 	rm -frv vendor
-	rm -frv text-to-tinybraille.min.js
+	rm -frv dist
 
 .PHONY: deps_update
 deps_update:
@@ -28,4 +29,3 @@ composer.lock: composer.json
 vendor/autoload.php: composer.lock
 	composer install
 	touch $@
-
