@@ -124,7 +124,7 @@ var textToTinyBraille=(function (lines) {
                 braillecharacters[i]=String.fromCharCode(braille_char_start+id);
             }
         }
-        //if last character is a space, remove it
+        //if last character is a space, remove it. The second space is a Braille pattern dots-0
         if([" ","⠀"].indexOf(braillecharacters[braillecharacters.length -1 ])!=-1){
             braillecharacters.splice(-1);
         }
