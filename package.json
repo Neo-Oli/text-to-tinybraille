@@ -1,0 +1,8 @@
+{
+  "name": "text-to-tinybraille",
+  "version": "1.0.0",
+  "main": "text-to-tinybraille.js",
+  "repository": "git@github.com:Neo-Oli/text-to-tinybraille.git",
+  "author": "Oliver Schmidhauser <oli@glow.li>",
+  "license": "GPL-3.0"
+}
